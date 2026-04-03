@@ -1,4 +1,6 @@
 import { Star } from "lucide-react";
+import FadeIn from "@/components/animations/FadeIn";
+import BlurText from "@/components/animations/BlurText";
 
 const testimonials = [
   {
@@ -23,31 +25,39 @@ const TestimonialsSection = () => {
     <section className="py-24">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="text-sm text-primary font-medium uppercase tracking-widest mb-3">Testimonials</p>
+          <FadeIn>
+            <p className="text-sm text-primary font-medium uppercase tracking-widest mb-3">Testimonials</p>
+          </FadeIn>
           <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4">
-            What Our Clients <span className="text-gradient">Say</span>
+            <BlurText text="What Our Clients" delay={0.1} />
+            {" "}
+            <span className="text-gradient"><BlurText text="Say" delay={0.4} /></span>
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <div
-              key={t.name}
-              className="p-6 rounded-xl border border-border bg-gradient-card hover-lift"
-            >
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={14} className="fill-primary text-primary" />
-                ))}
+          {testimonials.map((t, i) => (
+            <FadeIn key={t.name} delay={0.1 * i}>
+              <div className="p-6 rounded-2xl border border-border bg-background hover-lift">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, j) => (
+                    <Star key={j} size={14} className="fill-primary text-primary" />
+                  ))}
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-6 italic">
+                  "{t.quote}"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground font-heading font-bold text-sm">
+                    {t.name.split(" ").map(n => n[0]).join("")}
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground text-sm">{t.name}</p>
+                    <p className="text-xs text-muted-foreground">{t.role}</p>
+                  </div>
+                </div>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-6 italic">
-                "{t.quote}"
-              </p>
-              <div>
-                <p className="font-medium text-foreground text-sm">{t.name}</p>
-                <p className="text-xs text-muted-foreground">{t.role}</p>
-              </div>
-            </div>
+            </FadeIn>
           ))}
         </div>
       </div>

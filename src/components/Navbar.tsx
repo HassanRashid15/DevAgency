@@ -37,8 +37,8 @@ const Navbar = () => {
               to={link.path}
               className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                 location.pathname === link.path
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "text-primary bg-primary/5"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
               }`}
             >
               {link.label}
@@ -63,7 +63,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="lg:hidden glass border-t border-border">
+        <div className="lg:hidden bg-background border-t border-border">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
             {navLinks.map((link) => (
               <Link
@@ -72,7 +72,7 @@ const Navbar = () => {
                 onClick={() => setIsOpen(false)}
                 className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                   location.pathname === link.path
-                    ? "text-primary"
+                    ? "text-primary bg-primary/5"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
