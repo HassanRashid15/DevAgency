@@ -5,7 +5,7 @@ import FadeIn from "@/components/animations/FadeIn";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-hero">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
@@ -13,7 +13,7 @@ const HeroSection = () => {
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-[0.07]"
+          className="w-full h-full object-cover opacity-[0.06]"
           poster=""
         >
           <source
@@ -21,14 +21,14 @@ const HeroSection = () => {
             type="video/mp4"
           />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background/80" />
       </div>
 
       {/* Decorative elements */}
       <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-      <div className="absolute top-1/3 left-1/4 w-2 h-2 rounded-full bg-primary/30 animate-pulse-glow" />
-      <div className="absolute top-1/2 right-1/3 w-1.5 h-1.5 rounded-full bg-accent/40 animate-pulse-glow" style={{ animationDelay: "1s" }} />
+      <div className="absolute top-1/3 left-1/4 w-2 h-2 rounded-full bg-primary/20 animate-pulse-glow" />
+      <div className="absolute top-1/2 right-1/3 w-1.5 h-1.5 rounded-full bg-accent/30 animate-pulse-glow" style={{ animationDelay: "1s" }} />
 
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -45,10 +45,12 @@ const HeroSection = () => {
             </div>
           </FadeIn>
 
-          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6 text-foreground">
-            <SplitText text="Building the Future" splitBy="words" delay={0.2} />
+          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
+            <span className="text-foreground">
+              <SplitText text="Building the Future" splitBy="words" delay={0.2} />
+            </span>
             <br />
-            <span className="text-gradient">
+            <span className="text-gradient inline-block">
               <SplitText text="with Technology" splitBy="words" delay={0.5} />
             </span>
           </h1>

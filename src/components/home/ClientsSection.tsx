@@ -6,25 +6,27 @@ const clients = [
 
 const ClientsSection = () => {
   return (
-    <section className="py-16 border-y border-border bg-card">
+    <section className="py-16 border-y border-border bg-card overflow-hidden">
       <div className="container mx-auto px-4">
         <FadeIn>
           <p className="text-center text-sm text-muted-foreground mb-8 uppercase tracking-widest font-medium">
             Trusted by industry leaders
           </p>
         </FadeIn>
-        <FadeIn delay={0.1}>
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-14">
-            {clients.map((name) => (
-              <div
-                key={name}
-                className="text-muted-foreground/30 font-heading font-semibold text-lg hover:text-primary/60 transition-colors duration-300 cursor-default select-none"
-              >
-                {name}
-              </div>
-            ))}
-          </div>
-        </FadeIn>
+      </div>
+      <div className="relative">
+        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-card to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-card to-transparent z-10" />
+        <div className="flex animate-marquee">
+          {[...clients, ...clients, ...clients, ...clients].map((name, i) => (
+            <div
+              key={`${name}-${i}`}
+              className="flex-shrink-0 mx-8 md:mx-12 h-14 flex items-center justify-center text-muted-foreground/30 font-heading font-semibold text-lg hover:text-primary/60 transition-colors duration-300 cursor-default select-none whitespace-nowrap"
+            >
+              {name}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
