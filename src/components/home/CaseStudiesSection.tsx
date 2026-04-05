@@ -8,33 +8,33 @@ const caseStudies = [
     title: "AI-Powered Risk Assessment Platform",
     description: "Built a real-time risk scoring engine processing 10M+ transactions daily for a leading financial institution.",
     metrics: "40% faster decisions",
-    gradient: "from-primary/15 via-primary/5 to-accent/10",
+    gradient: "from-primary/20 via-primary/5 to-accent/15",
   },
   {
     category: "Healthcare",
     title: "Telemedicine Platform Scaling",
     description: "Architected a HIPAA-compliant telehealth solution serving 500K+ patients across 3 countries.",
     metrics: "3x user growth",
-    gradient: "from-accent/15 via-accent/5 to-primary/10",
+    gradient: "from-accent/20 via-accent/5 to-primary/15",
   },
   {
     category: "E-Commerce",
     title: "Enterprise Marketplace Rebuild",
     description: "Migrated a legacy monolith to microservices, achieving 99.99% uptime and sub-second page loads.",
     metrics: "60% cost reduction",
-    gradient: "from-primary/10 via-accent/8 to-primary/15",
+    gradient: "from-primary/15 via-accent/10 to-primary/20",
   },
 ];
 
 const CaseStudiesSection = () => {
   return (
-    <section className="py-24 section-alt">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <FadeIn>
             <p className="text-sm text-primary font-medium uppercase tracking-widest mb-3">Our Work</p>
           </FadeIn>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4 text-foreground">
             <BlurText text="Case" delay={0.1} />
             {" "}
             <span className="text-gradient"><BlurText text="Studies" delay={0.2} /></span>
@@ -49,7 +49,7 @@ const CaseStudiesSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {caseStudies.map((study, i) => (
             <FadeIn key={study.title} delay={0.1 * i}>
-              <div className="group relative rounded-2xl border border-border overflow-hidden hover-lift cursor-pointer bg-background">
+              <div className="group relative rounded-2xl border border-border overflow-hidden hover-lift cursor-pointer bg-card">
                 <div className={`h-48 bg-gradient-to-br ${study.gradient} flex items-center justify-center`}>
                   <span className="text-4xl font-heading font-bold text-foreground/[0.06]">{study.category}</span>
                 </div>

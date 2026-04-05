@@ -148,6 +148,11 @@
   .section-alt {
     background: hsl(210 40% 98%);
   }
+
+  .section-dark {
+    background: hsl(222 47% 6%);
+    color: hsl(0 0% 100%);
+  }
 }
 
 @keyframes fadeUp {

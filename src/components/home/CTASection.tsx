@@ -5,13 +5,12 @@ import SplitText from "@/components/animations/SplitText";
 
 const CTASection = () => {
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-hero" />
+    <section className="py-24 relative overflow-hidden bg-background">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
             <SplitText text="Ready to Build" splitBy="words" delay={0} />
             <br />
             <span className="text-gradient">
