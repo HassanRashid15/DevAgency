@@ -22,13 +22,13 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   return (
-    <section className="py-24">
+    <section className="py-24 section-dark">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <FadeIn>
-            <p className="text-sm text-primary font-medium uppercase tracking-widest mb-3">Testimonials</p>
+            <p className="text-sm text-accent font-medium uppercase tracking-widest mb-3">Testimonials</p>
           </FadeIn>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4 text-white">
             <BlurText text="What Our Clients" delay={0.1} />
             {" "}
             <span className="text-gradient"><BlurText text="Say" delay={0.4} /></span>
@@ -38,13 +38,13 @@ const TestimonialsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
             <FadeIn key={t.name} delay={0.1 * i}>
-              <div className="p-6 rounded-2xl border border-border bg-background hover-lift">
+              <div className="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover-lift transition-all duration-300 hover:border-primary/30">
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, j) => (
-                    <Star key={j} size={14} className="fill-primary text-primary" />
+                    <Star key={j} size={14} className="fill-accent text-accent" />
                   ))}
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6 italic">
+                <p className="text-sm text-slate-300 leading-relaxed mb-6 italic">
                   "{t.quote}"
                 </p>
                 <div className="flex items-center gap-3">
@@ -52,8 +52,8 @@ const TestimonialsSection = () => {
                     {t.name.split(" ").map(n => n[0]).join("")}
                   </div>
                   <div>
-                    <p className="font-medium text-foreground text-sm">{t.name}</p>
-                    <p className="text-xs text-muted-foreground">{t.role}</p>
+                    <p className="font-medium text-white text-sm">{t.name}</p>
+                    <p className="text-xs text-slate-400">{t.role}</p>
                   </div>
                 </div>
               </div>

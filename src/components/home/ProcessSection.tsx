@@ -10,13 +10,13 @@ const steps = [
 
 const ProcessSection = () => {
   return (
-    <section className="py-24 section-alt">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <FadeIn>
             <p className="text-sm text-primary font-medium uppercase tracking-widest mb-3">How We Work</p>
           </FadeIn>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4 text-foreground">
             <BlurText text="Our" delay={0.1} />
             {" "}
             <span className="text-gradient"><BlurText text="Process" delay={0.2} /></span>
@@ -32,7 +32,7 @@ const ProcessSection = () => {
           {steps.map((step, i) => (
             <FadeIn key={step.number} delay={0.15 * i}>
               <div className="relative">
-                <div className="p-6 rounded-2xl border border-border bg-background hover-lift group">
+                <div className="p-6 rounded-2xl border border-border bg-card hover-lift group">
                   <span className="text-5xl font-heading font-bold text-gradient opacity-40 group-hover:opacity-70 transition-opacity">{step.number}</span>
                   <h3 className="font-heading font-semibold text-lg mt-3 mb-2 text-foreground">{step.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>

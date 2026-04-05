@@ -1,16 +1,34 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import SplitText from "@/components/animations/SplitText";
-import BlurText from "@/components/animations/BlurText";
 import FadeIn from "@/components/animations/FadeIn";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-hero">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover opacity-[0.07]"
+          poster=""
+        >
+          <source
+            src="https://cdn.pixabay.com/video/2021/07/30/83523-581269517_large.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background" />
+      </div>
+
       {/* Decorative elements */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/[0.02] rounded-full blur-3xl" />
+      <div className="absolute top-1/3 left-1/4 w-2 h-2 rounded-full bg-primary/30 animate-pulse-glow" />
+      <div className="absolute top-1/2 right-1/3 w-1.5 h-1.5 rounded-full bg-accent/40 animate-pulse-glow" style={{ animationDelay: "1s" }} />
 
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -21,13 +39,13 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 relative z-10 pt-20">
         <div className="max-w-4xl mx-auto text-center">
           <FadeIn delay={0}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 mb-8 backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse-glow" />
               <span className="text-sm text-muted-foreground font-medium">Trusted by 200+ enterprises worldwide</span>
             </div>
           </FadeIn>
 
-          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
+          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6 text-foreground">
             <SplitText text="Building the Future" splitBy="words" delay={0.2} />
             <br />
             <span className="text-gradient">
