@@ -1,38 +1,46 @@
-import { Globe, Brain, Smartphone, Cloud, Palette, Shield } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Globe, Brain, Smartphone, Cloud, Palette, Shield, ArrowRight } from "lucide-react";
 import FadeIn from "@/components/animations/FadeIn";
 import BlurText from "@/components/animations/BlurText";
 import ParallaxSection from "@/components/animations/ParallaxSection";
+import Link from "next/link";
 
 const services = [
   {
+    id: "web-development",
     icon: Globe,
     title: "Web Development",
-    description: "Full-stack web applications built with modern frameworks, optimized for performance and scalability.",
+    description: "Our team of skilled developers crafts high-performance, visually appealing websites using industry-leading technologies like PHP Laravel and Node.js.",
   },
   {
+    id: "web-app-development",
     icon: Brain,
-    title: "AI & Machine Learning",
-    description: "Intelligent solutions powered by cutting-edge AI — from NLP to computer vision and predictive analytics.",
+    title: "Web App Development",
+    description: "Build innovative, user-centric web applications that streamline processes and enhance user experiences with scalable and secure solutions.",
   },
   {
+    id: "ecommerce-development",
     icon: Smartphone,
-    title: "Mobile Development",
-    description: "Native and cross-platform mobile apps that deliver seamless experiences across iOS and Android.",
+    title: "Ecommerce Development",
+    description: "Our expert developers create seamless, user-friendly Ecommerce stores that drive sales and customer satisfaction with custom storefronts.",
   },
   {
+    id: "dedicated-teams",
     icon: Cloud,
-    title: "Cloud & DevOps",
-    description: "Scalable cloud architecture, CI/CD pipelines, and infrastructure automation for enterprise workloads.",
+    title: "Dedicated Teams",
+    description: "Meet our passionate team, committed to delivering exceptional results. Our talented developers and QA experts work tirelessly to bring your vision to life.",
   },
   {
+    id: "custom-ai-solutions",
     icon: Palette,
-    title: "UI/UX Design",
-    description: "User-centered design that combines aesthetics with usability — research-driven and conversion-focused.",
+    title: "Custom AI Solutions",
+    description: "Custom web solutions development agency driven by AI and focused on performance and security. We ensure quality work and customer satisfaction.",
   },
   {
+    id: "quality-assurance",
     icon: Shield,
-    title: "Cybersecurity",
-    description: "Comprehensive security audits, penetration testing, and compliance solutions to protect your assets.",
+    title: "Quality Assurance",
+    description: "Meticulous testing and quality control provided by our dedicated QA experts to ensure your platform performs flawlessly across all devices.",
   },
 ];
 
@@ -65,15 +73,20 @@ const ServicesSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, i) => (
             <FadeIn key={service.title} delay={0.1 * i}>
-              <div className="group relative p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover-lift cursor-pointer overflow-hidden transition-all duration-300 hover:border-primary/30 hover:bg-white/[0.08] h-full">
-                <div className="relative z-10">
-                  <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center mb-4 group-hover:bg-primary/25 transition-colors">
-                    <service.icon size={24} className="text-primary" />
+              <Link href={`/services/${service.id}`}>
+                <Card className="group relative h-full cursor-pointer gap-0 overflow-hidden border-white/10 bg-white/5 p-8 text-inherit shadow-none backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-white/[0.08] hover-lift">
+                  <div className="relative z-10">
+                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all duration-300">
+                      <service.icon size={28} className="text-primary" />
+                    </div>
+                    <h3 className="font-heading font-bold text-xl mb-3 text-white group-hover:text-primary transition-colors">{service.title}</h3>
+                    <p className="text-sm text-slate-400 leading-relaxed mb-6 line-clamp-3">{service.description}</p>
+                    <div className="flex items-center text-xs font-bold text-primary gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      LEARN MORE <ArrowRight size={14} />
+                    </div>
                   </div>
-                  <h3 className="font-heading font-semibold text-lg mb-2 text-white">{service.title}</h3>
-                  <p className="text-sm text-slate-400 leading-relaxed">{service.description}</p>
-                </div>
-              </div>
+                </Card>
+              </Link>
             </FadeIn>
           ))}
         </div>

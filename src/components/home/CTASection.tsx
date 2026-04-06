@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import FadeIn from "@/components/animations/FadeIn";
 import SplitText from "@/components/animations/SplitText";
 import ParallaxSection from "@/components/animations/ParallaxSection";
+import Link from "next/link";
 
 const CTASection = () => {
   return (
@@ -13,10 +14,13 @@ const CTASection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
-            <SplitText text="Ready to Build" splitBy="words" delay={0} />
-            <br />
-            <SplitText text="Something Great?" splitBy="words" delay={0.3} gradient />
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.18] pb-1 mb-6 text-foreground">
+            <span className="block">
+              <SplitText text="Ready to Build" splitBy="words" delay={0} />
+            </span>
+            <span className="block">
+              <SplitText text="Something Great?" splitBy="words" delay={0.3} gradient />
+            </span>
           </h2>
           <FadeIn delay={0.5}>
             <p className="text-muted-foreground mb-8 text-lg">
@@ -25,12 +29,16 @@ const CTASection = () => {
           </FadeIn>
           <FadeIn delay={0.6}>
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <Button variant="hero" size="lg" className="gap-2 px-8">
-                Start a Project <ArrowRight size={16} />
-              </Button>
-              <Button variant="hero-outline" size="lg" className="px-8">
-                Schedule a Call
-              </Button>
+              <Link href="/contact-us">
+                <Button variant="hero" size="lg" className="gap-2 px-8">
+                  Start a Project <ArrowRight size={16} />
+                </Button>
+              </Link>
+              <Link href="/contact-us">
+                <Button variant="hero-outline" size="lg" className="px-8">
+                  Schedule a Call
+                </Button>
+              </Link>
             </div>
           </FadeIn>
         </div>
@@ -40,3 +48,4 @@ const CTASection = () => {
 };
 
 export default CTASection;
+

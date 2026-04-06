@@ -1,3 +1,5 @@
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { ArrowUpRight } from "lucide-react";
 import FadeIn from "@/components/animations/FadeIn";
 import BlurText from "@/components/animations/BlurText";
@@ -5,24 +7,24 @@ import ParallaxSection from "@/components/animations/ParallaxSection";
 
 const caseStudies = [
   {
-    category: "FinTech",
-    title: "AI-Powered Risk Assessment Platform",
-    description: "Built a real-time risk scoring engine processing 10M+ transactions daily for a leading financial institution.",
-    metrics: "40% faster decisions",
+    category: "Hospitality",
+    title: "Homate - Smart Property Management",
+    description: "A comprehensive platform for managing property data flows, Slack integrations, and real-time backend updates.",
+    metrics: "Seamless Integration",
     gradient: "from-primary/20 via-primary/5 to-accent/15",
   },
   {
-    category: "Healthcare",
-    title: "Telemedicine Platform Scaling",
-    description: "Architected a HIPAA-compliant telehealth solution serving 500K+ patients across 3 countries.",
-    metrics: "3x user growth",
+    category: "E-Commerce",
+    title: "Volumenzeit - Premium Watch Store",
+    description: "Customized theme and high-performance frontend for a luxury watch brand, optimized for loading times.",
+    metrics: "Bug-Free Performance",
     gradient: "from-accent/20 via-accent/5 to-primary/15",
   },
   {
-    category: "E-Commerce",
-    title: "Enterprise Marketplace Rebuild",
-    description: "Migrated a legacy monolith to microservices, achieving 99.99% uptime and sub-second page loads.",
-    metrics: "60% cost reduction",
+    category: "Marketplace",
+    title: "RentLondonFlat.com Data Sync",
+    description: "Seamless data synchronization with Salesforce and management of high-volume web traffic for a leading real estate platform.",
+    metrics: "Scalable Backend",
     gradient: "from-primary/15 via-accent/10 to-primary/20",
   },
 ];
@@ -54,7 +56,7 @@ const CaseStudiesSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {caseStudies.map((study, i) => (
             <FadeIn key={study.title} delay={0.1 * i}>
-              <div className="group relative rounded-2xl border border-border overflow-hidden hover-lift cursor-pointer bg-card h-full flex flex-col">
+              <Card className="group relative flex h-full cursor-pointer flex-col gap-0 overflow-hidden rounded-2xl border-border bg-card p-0 text-inherit shadow-sm hover-lift">
                 <div className={`h-48 bg-gradient-to-br ${study.gradient} flex items-center justify-center`}>
                   <span className="text-4xl font-heading font-bold text-foreground/[0.06]">{study.category}</span>
                 </div>
@@ -65,11 +67,14 @@ const CaseStudiesSection = () => {
                     <ArrowUpRight size={16} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">{study.description}</p>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 text-primary text-xs font-medium border border-primary/10 w-fit">
+                  <Badge
+                    variant="secondary"
+                    className="w-fit gap-2 rounded-full border border-primary/10 bg-primary/5 px-3 py-1 text-xs font-medium text-primary hover:bg-primary/10"
+                  >
                     {study.metrics}
-                  </div>
+                  </Badge>
                 </div>
-              </div>
+              </Card>
             </FadeIn>
           ))}
         </div>

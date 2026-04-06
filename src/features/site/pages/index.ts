@@ -1,0 +1,10 @@
+export { default as HomePage } from "./HomePage";
+export { default as AboutPage } from "./AboutPage";
+export { default as BlogPage } from "./BlogPage";
+export { default as BlogDetailPage } from "./BlogDetailPage";
+export { default as CareersPage } from "./CareersPage";
+export { default as ContactPage } from "./ContactPage";
+export { default as PortfolioPage } from "./PortfolioPage";
+export { default as PortfolioDetailPage } from "./PortfolioDetailPage";
+export { default as ServicesPage } from "./ServicesPage";
+export { default as NotFoundPage } from "./NotFoundPage";

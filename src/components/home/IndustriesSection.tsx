@@ -1,14 +1,27 @@
-import { Building2, Heart, ShoppingCart, GraduationCap, Plane, Factory } from "lucide-react";
+import { 
+  Building2, 
+  Heart, 
+  ShoppingCart, 
+  GraduationCap, 
+  Plane, 
+  Factory, 
+  Settings, 
+  Layout, 
+  Hammer, 
+  Users,
+  Zap
+} from "lucide-react";
+import { Card } from "@/components/ui/card";
 import FadeIn from "@/components/animations/FadeIn";
 import BlurText from "@/components/animations/BlurText";
 import ParallaxSection from "@/components/animations/ParallaxSection";
 
 const industries = [
-  { icon: Building2, label: "Banking & Finance" },
-  { icon: Heart, label: "Healthcare" },
-  { icon: ShoppingCart, label: "Retail & E-Commerce" },
-  { icon: GraduationCap, label: "Education" },
-  { icon: Plane, label: "Travel & Logistics" },
+  { icon: Plane, label: "Hospitality & Travel" },
+  { icon: ShoppingCart, label: "Retail" },
+  { icon: Hammer, label: "Engineering" },
+  { icon: Layout, label: "Real Estate" },
+  { icon: Zap, label: "Tech & Startups" },
   { icon: Factory, label: "Manufacturing" },
 ];
 
@@ -24,7 +37,7 @@ const IndustriesSection = () => {
           <FadeIn>
             <p className="text-sm text-accent font-medium uppercase tracking-widest mb-3">Industries</p>
           </FadeIn>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4 text-white">
+          <h2 className="font-heading text-2xl sm:text-3xl font-bold mb-4 text-white">
             <BlurText text="Industries We" delay={0.1} />
             {" "}
             <BlurText text="Serve" delay={0.3} gradient />
@@ -36,15 +49,15 @@ const IndustriesSection = () => {
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
           {industries.map((ind, i) => (
             <FadeIn key={ind.label} delay={0.08 * i}>
-              <div className="flex flex-col items-center gap-3 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover-lift cursor-default text-center group transition-all duration-300 hover:border-primary/30 hover:bg-white/[0.08]">
+              <Card className="group flex cursor-default flex-col items-center gap-3 rounded-2xl border-white/10 bg-white/5 p-6 text-center shadow-none backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-white/[0.08] hover-lift">
                 <div className="w-14 h-14 rounded-2xl bg-primary/15 flex items-center justify-center group-hover:bg-primary/25 transition-colors">
                   <ind.icon size={24} className="text-primary" />
                 </div>
                 <span className="text-sm font-medium text-white">{ind.label}</span>
-              </div>
+              </Card>
             </FadeIn>
           ))}
         </div>
