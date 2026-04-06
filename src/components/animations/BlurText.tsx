@@ -5,9 +5,10 @@ interface BlurTextProps {
   text: string;
   className?: string;
   delay?: number;
+  gradient?: boolean;
 }
 
-const BlurText = ({ text, className = "", delay = 0 }: BlurTextProps) => {
+const BlurText = ({ text, className = "", delay = 0, gradient = false }: BlurTextProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
@@ -25,7 +26,7 @@ const BlurText = ({ text, className = "", delay = 0 }: BlurTextProps) => {
             delay: delay + i * 0.1,
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
-          className="inline-block mr-[0.3em]"
+          className={`inline-block mr-[0.3em] ${gradient ? "text-gradient" : ""}`}
         >
           {word}
         </motion.span>

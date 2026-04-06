@@ -1,6 +1,7 @@
 import { Building2, Heart, ShoppingCart, GraduationCap, Plane, Factory } from "lucide-react";
 import FadeIn from "@/components/animations/FadeIn";
 import BlurText from "@/components/animations/BlurText";
+import ParallaxSection from "@/components/animations/ParallaxSection";
 
 const industries = [
   { icon: Building2, label: "Banking & Finance" },
@@ -13,8 +14,12 @@ const industries = [
 
 const IndustriesSection = () => {
   return (
-    <section className="py-24 section-dark">
-      <div className="container mx-auto px-4">
+    <section className="py-24 section-dark relative overflow-hidden">
+      <ParallaxSection speed={0.2} className="absolute inset-0 pointer-events-none">
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl" />
+      </ParallaxSection>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <FadeIn>
             <p className="text-sm text-accent font-medium uppercase tracking-widest mb-3">Industries</p>
@@ -22,7 +27,7 @@ const IndustriesSection = () => {
           <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4 text-white">
             <BlurText text="Industries We" delay={0.1} />
             {" "}
-            <span className="text-gradient"><BlurText text="Serve" delay={0.3} /></span>
+            <BlurText text="Serve" delay={0.3} gradient />
           </h2>
           <FadeIn delay={0.2}>
             <p className="text-slate-400">

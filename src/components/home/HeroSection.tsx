@@ -2,18 +2,29 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import SplitText from "@/components/animations/SplitText";
 import FadeIn from "@/components/animations/FadeIn";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const HeroSection = () => {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const videoY = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-hero">
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
+    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden bg-gradient-hero">
+      {/* Video Background with parallax */}
+      <motion.div className="absolute inset-0 z-0" style={{ y: videoY }}>
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-[0.06]"
+          className="w-full h-[120%] object-cover opacity-[0.06]"
           poster=""
         >
           <source
@@ -22,7 +33,7 @@ const HeroSection = () => {
           />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background/80" />
-      </div>
+      </motion.div>
 
       {/* Decorative elements */}
       <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float" />
@@ -36,7 +47,7 @@ const HeroSection = () => {
         backgroundSize: '40px 40px'
       }} />
 
-      <div className="container mx-auto px-4 relative z-10 pt-20">
+      <motion.div className="container mx-auto px-4 relative z-10 pt-20" style={{ y: contentY, opacity }}>
         <div className="max-w-4xl mx-auto text-center">
           <FadeIn delay={0}>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 mb-8 backdrop-blur-sm">
@@ -50,9 +61,7 @@ const HeroSection = () => {
               <SplitText text="Building the Future" splitBy="words" delay={0.2} />
             </span>
             <br />
-            <span className="text-gradient inline-block">
-              <SplitText text="with Technology" splitBy="words" delay={0.5} />
-            </span>
+            <SplitText text="with Technology" splitBy="words" delay={0.5} gradient />
           </h1>
 
           <FadeIn delay={0.7}>
@@ -82,14 +91,14 @@ const HeroSection = () => {
                 { value: "98%", label: "Client Satisfaction" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
-                  <div className="text-3xl sm:text-4xl font-heading font-bold text-gradient">{stat.value}</div>
+                  <div className="text-3xl sm:text-4xl font-heading font-bold text-gradient inline-block">{stat.value}</div>
                   <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
                 </div>
               ))}
             </div>
           </FadeIn>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
