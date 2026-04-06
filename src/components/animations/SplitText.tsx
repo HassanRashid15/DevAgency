@@ -7,16 +7,17 @@ interface SplitTextProps {
   delay?: number;
   splitBy?: "chars" | "words";
   as?: React.ElementType;
+  gradient?: boolean;
 }
 
-const SplitText = ({ text, className = "", delay = 0, splitBy = "chars", as: Tag = "span" }: SplitTextProps) => {
+const SplitText = ({ text, className = "", delay = 0, splitBy = "chars", as: Tag = "span", gradient = false }: SplitTextProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   const items = splitBy === "chars" ? text.split("") : text.split(" ");
 
   return (
-    <Tag ref={ref} className={`inline-flex flex-wrap ${className}`}>
+    <Tag ref={ref} className={`inline-flex flex-wrap ${gradient ? "text-gradient" : ""} ${className}`}>
       {items.map((item, i) => (
         <motion.span
           key={i}
@@ -27,7 +28,7 @@ const SplitText = ({ text, className = "", delay = 0, splitBy = "chars", as: Tag
             delay: delay + i * (splitBy === "chars" ? 0.03 : 0.08),
             ease: [0.25, 0.46, 0.45, 0.94],
           }}
-          className="inline-block"
+          className={`inline-block ${gradient ? "text-gradient" : ""}`}
         >
           {item === " " || splitBy === "words" ? (
             <>{item}{splitBy === "words" && i < items.length - 1 ? "\u00A0" : ""}</>
