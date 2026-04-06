@@ -1,4 +1,5 @@
 import FadeIn from "@/components/animations/FadeIn";
+import { motion } from "framer-motion";
 
 const clients = [
   "Microsoft", "Google", "Amazon", "Salesforce", "Oracle", "IBM", "SAP", "Adobe",
@@ -17,7 +18,11 @@ const ClientsSection = () => {
       <div className="relative">
         <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-card to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-card to-transparent z-10" />
-        <div className="flex animate-marquee">
+        <motion.div
+          className="flex w-max"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ x: { repeat: Infinity, repeatType: "loop", duration: 25, ease: "linear" } }}
+        >
           {[...clients, ...clients, ...clients, ...clients].map((name, i) => (
             <div
               key={`${name}-${i}`}
@@ -26,7 +31,7 @@ const ClientsSection = () => {
               {name}
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
